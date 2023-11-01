@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Конова Кирилла</title>
+</head>
+<body>
+    <h1>Анкета Конова Кирилла</h1>
+    <div class="lab">
+        <label id="name_change">Имя и фамилия:</label> 
+        <input type="text"  placeholder="Введите ваше имя и фамилию" id="name">
+        <button type="button" onclick="name_change()">Подтвердить</button>
+        <div id="admin"></div>
+    </div>
+    
+    <div class="lab">
+        <label >Возраст:</label>
+        <input type="number" id="age" placeholder="Введите ваш возвраст"></input>
+        <button type="button" onclick="age()">Подтвердить</button>
+    </div>
+    <div class="lab">
+      <label >Пол:</label>
+      <select id="selectvalue">
+        <option>М</option>
+        <option>Ж</option>
+        </select>
+    </div>
+    <div class="im"> 
+        <h1 id="name_vyvod"></h1>
+        <img  width="300" src="./12345.jpg">
+        <div class="age_head">
+        <label>Возраст:  </label><label id="vozrast"></label>
+        </div>
+        <div id="resultat">Результат анкеты: </div> <br>
+    </div class="gr">
+   <div> Выберете ваши навыки: <br>
+        <input id="checkbox1" type="checkbox"><label>Есть навыки программирования</label><br>
+        <input id="checkbox2" type="checkbox"><label>Есть знания математики</label><br>
+        <input id="checkbox5" type="checkbox"><label>Есть высшее образование</label><br>
+        <button onclick="check()">Результат</button>
+    </div>
+    <div class="gr">
+      <div class="lab">
+          <label class="zadanie">Задание 1</label><br>
+          <label>Первое число:</label> <br>
+              <input type="number" id="num1"><br>
+          <label >Второе число:</label> <br>
+              <input type="number" id="num2"><br>
+          <button  type="button" onclick="max()">Найти максимальное число</button>
+      </div> 
+      </div>
+    
+    
+    
+<script>
+function name_change(){
+    var a=String(document.getElementById("name").value);
+    document.getElementById("name_vyvod").innerHTML = a;
+}
+function age(){
+    let a = document.getElementById("age").value;
+    document.getElementById("vozrast").innerText=a;
+    if (document.getElementById("age").value <= 0)
+        alert("Возвраст не может быть отрицательным числом!")
+    else if(!confirm("Вы уверены, что вам "+a))
+    {
+       var b = prompt("Введите свой возвраст снова!");
+       document.getElementById("age").value=b;
+       document.getElementById("vozrast").innerText=b;
+    }
+}
+function check()
+{
+    if(document.getElementById("checkbox1").checked && document.getElementById("checkbox2").checked && document.getElementById("checkbox5").checked)
+    {
+        document.getElementById("resultat").innerText="Результат анкеты: положительный";
+    }
+    else{
+        document.getElementById("resultat").innerText="Результат анкеты: отрицательный";
+    }
+}
+function max(){
+    let a = document.getElementById("num1").value;
+    let b = document.getElementById("num2").value;
+        if(a<b && a!='' && b!='')
+        {
+           alert('Второе число больше')
+        }
+       else if(a>b &&a!=''&&b!='')
+       {
+            alert('Первое число больше')
+       }
+       else if (a==b &&a!=''&&b!=''){
+            alert('Числа равны')
+       }
+       else 
+       {
+           alert('Введены некорректные данные!')
+       }    
+}
+</script>
+<style>
+  @keyframes changeColor {
+  0% {
+    background-color: rgb(0, 0, 0);
+  }
+  50% {
+    background-color: rgb(8, 19, 237);
+  }
+  100% {
+    background-color: rgb(161, 3, 3);
+  }
+}
+ .head{
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+  }
+  h1{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  body{
+    animation: changeColor 5s infinite;
+    animation-direction: alternate;
+    color: white;
+    font-family:"Times New Roman", cursive;
+  }
+  .im{
+    display: grid;
+    justify-content: center;
+  }
+  .zadanie{
+    font-size: 20px;
+  }
+.gr{
+  display: flex;
+  justify-content: left;
+  gap: 100px;
+}
+.age_head{
+  display: flex;
+  gap:10px
+}
+#vozrast{
+  font-family: Arial, Helvetica, sans-serif;
+}
+</style>
+</body>
+</html>
